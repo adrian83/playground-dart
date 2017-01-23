@@ -1,42 +1,10 @@
 import "dart:async";
 
 import "package:test/test.dart";
-import 'package:mockito/mockito.dart';
+import "package:mockito/mockito.dart";
 
-class Dog {
-  String _name;
-  Dog(this._name);
-  String get name => _name;
-  String toString() => "Dog {name:${_name}}";
-}
+import "dogs.dart";
 
-class DogRepository {
-  List<Dog> listDogs() {
-    // returns dogs
-    return new List<Dog>();
-  }
-
-  void saveDog(Dog dog) {
-    // save dog
-  }
-}
-
-class DogService {
-  DogRepository _repo;
-
-  DogService(this._repo);
-
-  Future<List<Dog>> listDogs() async {
-    return _repo.listDogs();
-  }
-
-  void saveDog(Dog dog) {
-    if (dog == null) {
-      throw new ArgumentError("Dog cannot be null");
-    }
-    _repo.saveDog(dog);
-  }
-}
 
 class DogRepositoryMock extends Mock implements DogRepository {}
 
@@ -50,7 +18,7 @@ void main() {
 
   var dogService = new DogService(dogRepositoryMock);
 
-  test("DogService should return list of dogs", () {
+  test("DogService should return list of dogs", () async {
     // given
     var snoopy = new Dog("Snoopy");
     var dogs = new List();
@@ -58,11 +26,11 @@ void main() {
 
     when(dogRepositoryMock.listDogs()).thenReturn(dogs);
     // when
-    var result = dogService.listDogs();
+    var result = await dogService.listDogs();
 
     verify(dogRepositoryMock.listDogs());
     // then
-    expect(result.value[0], completion(equals(snoopy)));
+    expect(result[0], equals(snoopy));
   });
 
   test("DogService should throw Error when trying to save null", () {
