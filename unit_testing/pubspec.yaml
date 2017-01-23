@@ -1,0 +1,8 @@
+name: unit_testing
+description: simple example of how to write uni tests in dart
+version: 0.0.1
+environment:
+  sdk: '>=1.13.0 <2.0.0'
+dependencies:
+  test: ^0.12.18
+  mockito: ^1.0.1
