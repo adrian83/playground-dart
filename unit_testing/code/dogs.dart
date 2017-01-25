@@ -1,6 +1,5 @@
 import "dart:async";
 
-
 class Dog {
   String _name;
   Dog(this._name);
@@ -9,19 +8,12 @@ class Dog {
 }
 
 class DogRepository {
-  List<Dog> listDogs() {
-    // returns dogs
-    return new List<Dog>();
-  }
-
-  void saveDog(Dog dog) {
-    // save dog
-  }
+  List<Dog> listDogs() => new List<Dog>(); // get dogs from DB
+  void saveDog(Dog dog) {} // save dog into DB
 }
 
 class DogService {
   DogRepository _repo;
-
   DogService(this._repo);
 
   Future<List<Dog>> listDogs() async {
