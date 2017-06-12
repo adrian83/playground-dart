@@ -6,7 +6,7 @@ import "dogs.dart";
 class DogRepositoryMock extends Mock implements DogRepository {}
 
 void main() {
-  test("Dog's toString() method result should contain dog's name.", () {
+  test("toString() method result should contain dog's name", () {
     var name = "Snoopy";
     expect(new Dog(name).toString(), contains(name));
   });
@@ -15,7 +15,7 @@ void main() {
   var dogRepositoryMock = new DogRepositoryMock();
   var dogService = new DogService(dogRepositoryMock);
 
-  test("DogService method listDogs should return list of dogs", () async {
+  test("listDogs should return list of dogs", () async {
     // given
     var snoopy = new Dog("Snoopy");
     var dogs = new List();
@@ -32,12 +32,12 @@ void main() {
     expect(result[0], equals(snoopy));
   });
 
-  test("DogService method saveDog should throw error when invoked with null parameter", () {
+  test("saveDog should throw error when invoked with null parameter", () {
     expect(() => dogService.saveDog(null), throwsArgumentError);
     verifyNever(dogRepositoryMock.saveDog(null));
   });
 
-  test("DogService method saveDog should store dog when invoked with valid parameter", () {
+  test("saveDog should store dog when invoked with valid parameter", () {
     // given
     var snoopy = new Dog("Snoopy");
 
