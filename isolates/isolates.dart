@@ -2,18 +2,8 @@ import 'dart:async';
 import 'dart:isolate';
 
 abstract class Task<T> {
+  Task();
   T execute();
-}
-
-class HelloWorldTask extends Task<String> {
-  String execute() {
-    return "Hello world";
-  }
-}
-
-main() async {
-  var task1Result = executeInIsolate(new HelloWorldTask());
-  print(await task1Result);
 }
 
 Future<T> executeInIsolate(Task<T> task) async {

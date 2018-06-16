@@ -1,0 +1,7 @@
+name: isolates
+description: tasks executed in isolates
+version: 0.0.1
+environment:
+  sdk: '>=1.13.0 <2.0.0'
+dependencies:
+  test: ^0.12.18
