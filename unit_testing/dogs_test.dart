@@ -8,6 +8,7 @@ class DogRepositoryMock extends Mock implements DogRepository {}
 void main() {
   test("toString() method result should contain dog's name", () {
     var name = "Snoopy";
+
     expect(new Dog(name).toString(), contains(name));
   });
 
